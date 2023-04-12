@@ -1,0 +1,18 @@
+# settings-dev.yaml
+name: "sample-go-service"
+port: 8022
+logsAddress: "./logs/"
+
+mysql:
+ name: "root"
+ host: "47.113.201.193"
+ port: 8210
+ password: "ronin123456"
+ dbName: "sample-go-service"
+ 
+redis:
+ host: "47.113.201.193"
+ port: 6379
+
+jwt:
+  key: "EYsnfKMf5XWk87LASEs28Dj5ZqGkSerH"
