@@ -2,6 +2,7 @@ package dao
 
 import (
 	"fmt"
+	"sample-go-service/forms"
 	"sample-go-service/global"
 	"sample-go-service/models"
 
@@ -11,6 +12,25 @@ import (
 )
 
 var users []models.User
+
+func InsertUser(user forms.CreateForm) bool {
+	result := global.DB.FirstOrCreate(user)
+	return result.RowsAffected > 0
+}
+
+func UpdateUser(ID string, data interface{}) bool {
+	result := global.DB.Where("ID", ID).Updates(data)
+	return result.RowsAffected > 0
+}
+
+func GetUser(ID string) (*models.User, bool) {
+	row := global.DB.Where("ID", ID).Find(&user)
+	if row.RowsAffected < 1 {
+		return &user, false
+	}
+	return &user, true
+
+}
 
 // GetUserList 获取用户列表(page第几页,page_size每页几条数据)
 func GetUserListDao(page int, page_size int) (int, []interface{}) {
@@ -40,15 +60,15 @@ func GetUserListDao(page int, page_size int) (int, []interface{}) {
 			birthday = useSingle.Birthday.Format("2006-01-02")
 		}
 		userItemMap := map[string]interface{}{
-			"id":        useSingle.ID,
-			"password":  useSingle.Password,
-			"nick_name": useSingle.NickName,
-			"head_url":  useSingle.HeadUrl,
-			"birthday":  birthday,
-			"address":   useSingle.Address,
-			"gender":    useSingle.Gender,
-			"role":      useSingle.Role,
-			"mobile":    useSingle.Mobile,
+			"id":       useSingle.ID,
+			"password": useSingle.Password,
+			"userName": useSingle.UserName,
+			"head_url": useSingle.HeadUrl,
+			"birthday": birthday,
+			"address":  useSingle.Address,
+			"gender":   useSingle.Gender,
+			"role":     useSingle.Role,
+			"mobile":   useSingle.Mobile,
 		}
 		userList = append(userList, userItemMap)
 	}
@@ -60,7 +80,7 @@ var user models.User
 // UsernameFindUserInfo 通过username找到用户信息
 func FindUserInfo(username string, password string) (*models.User, bool) {
 	// 查询用户
-	rows := global.DB.Where(&models.User{NickName: username, Password: password}).Find(&user)
+	rows := global.DB.Where(&models.User{UserName: username, Password: password}).Find(&user)
 	fmt.Println(&user)
 	if rows.RowsAffected < 1 {
 		return &user, false

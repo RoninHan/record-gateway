@@ -11,6 +11,8 @@ func UserRouter(Router *gin.RouterGroup) {
 	UserRouter := Router.Group("user")
 	{
 		UserRouter.POST("login", controller.PasswordLogin)
-		UserRouter.POST("list", middlewares.JWTAuth(), middlewares.IsAdminAuth(), controller.GetUserList)
+		UserRouter.POST("register", controller.CreateUser)
+		UserRouter.POST("update", middlewares.JWTAuth(), controller.UpdateUser)
+		UserRouter.POST("list", middlewares.JWTAuth(), controller.GetUserList)
 	}
 }

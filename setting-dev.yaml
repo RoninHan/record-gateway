@@ -8,7 +8,7 @@ mysql:
  host: "47.113.201.193"
  port: 8210
  password: "ronin123456"
- dbName: "sample-go-service"
+ dbName: "record-app"
  
 redis:
  host: "47.113.201.193"

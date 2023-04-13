@@ -30,7 +30,7 @@ func PasswordLogin(c *gin.Context) {
 		Response.Err(c, 401, 401, "未注册该用户", "")
 		return
 	}
-	token := utils.CreateToken(c, int(user.ID), user.NickName, user.Role)
+	token := utils.CreateToken(c, user.ID, user.UserName, user.Role)
 	userinfoMap := HandleUserModelToMap(user)
 	userinfoMap["token"] = token
 	Response.Success(c, 200, "success", userinfoMap)
@@ -60,6 +60,28 @@ func GetUserList(c *gin.Context) {
 	})
 }
 
+func CreateUser(c *gin.Context) {
+	CreateForm := forms.CreateForm{}
+	if err := c.ShouldBind(&CreateForm); err != nil {
+		utils.HandleValidatorError(c, err)
+		return
+	}
+
+	result := dao.InsertUser(CreateForm)
+	Response.Success(c, 200, "添加成功", result)
+}
+
+func UpdateUser(c *gin.Context) {
+	UpdateForm := forms.UpdateForm{}
+	if err := c.ShouldBind(&UpdateForm); err != nil {
+		utils.HandleValidatorError(c, err)
+		return
+	}
+
+	result := dao.UpdateUser(UpdateForm.ID, UpdateForm)
+	Response.Success(c, 200, "更新成功", result)
+}
+
 func HandleUserModelToMap(user *models.User) map[string]interface{} {
 	birthday := ""
 	if user.Birthday == nil {
@@ -68,15 +90,15 @@ func HandleUserModelToMap(user *models.User) map[string]interface{} {
 		birthday = user.Birthday.Format("2006-01-02")
 	}
 	userItemMap := map[string]interface{}{
-		"id":        user.ID,
-		"nick_name": user.NickName,
-		"head_url":  user.HeadUrl,
-		"birthday":  birthday,
-		"address":   user.Address,
-		"desc":      user.Desc,
-		"gender":    user.Gender,
-		"role":      user.Role,
-		"mobile":    user.Mobile,
+		"id":       user.ID,
+		"UserName": user.UserName,
+		"HeadUrl":  user.HeadUrl,
+		"birthday": birthday,
+		"address":  user.Address,
+		"desc":     user.Desc,
+		"gender":   user.Gender,
+		"role":     user.Role,
+		"mobile":   user.Mobile,
 	}
 	return userItemMap
 }

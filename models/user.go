@@ -3,9 +3,9 @@ package models
 import "time"
 
 type User struct {
-	ID       uint       `json:"id" gorm:"primaryKey"`
+	ID       string     `json:"id" gorm:"primaryKey"`
 	Password string     `json:"password"`
-	NickName string     `json:"nick_name"`
+	UserName string     `json:"user_name"`
 	HeadUrl  string     `json:"head_url"`
 	Birthday *time.Time `json:"birthday" gorm:"type:date"`
 	Address  string     `json:"address"`
