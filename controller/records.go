@@ -9,15 +9,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CreateCategories(c *gin.Context) {
-	CategoriesForm := forms.CreateCategories{}
-	if err := c.ShouldBind(&CategoriesForm); err != nil {
+func CreateRecord(c *gin.Context) {
+	RecordsForm := forms.RecordsForm{}
+	if err := c.ShouldBind(&RecordsForm); err != nil {
 		// 统一处理异常
 		utils.HandleValidatorError(c, err)
 		return
 	}
 
-	result := dao.CreateCategories(CategoriesForm)
+	result := dao.CreateRecord(RecordsForm)
 	if !result {
 		Response.Err(c, 401, 401, "新增失败", "")
 		return
@@ -25,7 +25,7 @@ func CreateCategories(c *gin.Context) {
 	Response.Success(c, 200, "success", "Create successfully")
 }
 
-func GetCategories(c *gin.Context) {
-	result, _ := dao.FindCategories()
+func GetRecirds(c *gin.Context) {
+	result, _ := dao.FindRecord()
 	Response.Success(c, 200, "success", result)
 }
