@@ -7,6 +7,7 @@ import (
 	"sample-go-service/utils"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 
 	"sample-go-service/forms"
 )
@@ -25,15 +26,17 @@ func PasswordLogin(c *gin.Context) {
 	// 	return
 	// }
 
-	user, ok := dao.FindUserInfo(PasswordLoginForm.UserName, PasswordLoginForm.PassWord)
+	user, ok := dao.FindUserInfo(PasswordLoginForm.Email, PasswordLoginForm.PassWord)
 	if !ok {
 		Response.Err(c, 401, 401, "未注册该用户", "")
 		return
 	}
+	println(user)
 	token := utils.CreateToken(c, user.ID, user.UserName, user.Role)
 	userinfoMap := HandleUserModelToMap(user)
-	userinfoMap["token"] = token
-	Response.Success(c, 200, "success", userinfoMap)
+	result := map[string]interface{}{"user": userinfoMap, "token": token}
+
+	Response.Success(c, 200, "success", result)
 }
 
 // GetUserList 获取用户列表
@@ -67,7 +70,24 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 
-	result := dao.InsertUser(CreateForm)
+	_, ok := dao.FindUserInfo(CreateForm.Email, CreateForm.Password)
+	if ok {
+		Response.Err(c, 401, 401, "存在相同的user", "")
+		return
+	}
+	var user models.User
+	user.ID = uuid.New().String()
+	user.Address = CreateForm.Address
+	user.Email = CreateForm.Email
+	user.Password = CreateForm.Password
+	user.Birthday = CreateForm.Birthday
+	user.UserName = CreateForm.UserName
+	user.Role = 1
+	user.Gender = CreateForm.Gender
+	user.HeadUrl = CreateForm.HeadUrl
+	user.Mobile = CreateForm.Mobile
+
+	result := dao.InsertUser(user)
 	Response.Success(c, 200, "添加成功", result)
 }
 

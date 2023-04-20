@@ -13,6 +13,6 @@ func UserRouter(Router *gin.RouterGroup) {
 		UserRouter.POST("login", controller.PasswordLogin)
 		UserRouter.POST("register", controller.CreateUser)
 		UserRouter.POST("update", middlewares.JWTAuth(), controller.UpdateUser)
-		UserRouter.POST("list", middlewares.JWTAuth(), controller.GetUserList)
+		UserRouter.POST("list", controller.GetUserList)
 	}
 }

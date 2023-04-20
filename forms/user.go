@@ -3,28 +3,24 @@ package forms
 import "time"
 
 type PasswordLoginForm struct {
-	UserName  string `form:"user_name" json:"user_name"`
-	Mobile    string `form:"mobile" json:"mobile" binding:"mobile"` //手机号码格式有规范可寻， 自定义validator
-	PassWord  string `form:"password" json:"password" binding:"required,min=3,max=20"`
-	Captcha   string `form:"captcha" json:"captcha" binding:"required,min=5,max=5"` // 验证码
-	CaptchaId string `form:"captcha_id" json:"captcha_id" binding:"required"`       // 验证码id
+	Email    string `form:"email" json:"email"`
+	PassWord string `form:"password" json:"password"`
 }
 
 type CreateForm struct {
-	ID       string
-	Password string
-	UserName string
-	HeadUrl  string
-	Birthday *time.Time
-	Address  string
-	Desc     string
-	Gender   string
-	Role     int
-	Mobile   string
+	Email    string     `form:"email" json:"email" binding:"required"`
+	Password string     `form:"password" json:"password" binding:"required"`
+	UserName string     `form:"user_name" json:"user_name" `
+	HeadUrl  string     `form:"head_url" json:"head_url" `
+	Birthday *time.Time `form:"birthday" json:"birthday"`
+	Address  string     `form:"address" json:"address"`
+	Gender   string     `form:"gender" json:"gender"`
+	Mobile   string     `form:"mobile" json:"mobile"`
 }
 
 type UpdateForm struct {
 	ID       string
+	Email    string
 	Password string
 	UserName string
 	HeadUrl  string
@@ -36,6 +32,7 @@ type UpdateForm struct {
 
 type UserListForm struct {
 	ID       string
+	Email    string
 	Password string
 	NickName string
 	HeadUrl  string

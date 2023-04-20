@@ -2,7 +2,6 @@ package dao
 
 import (
 	"fmt"
-	"sample-go-service/forms"
 	"sample-go-service/global"
 	"sample-go-service/models"
 
@@ -13,9 +12,12 @@ import (
 
 var users []models.User
 
-func InsertUser(user forms.CreateForm) bool {
-	result := global.DB.FirstOrCreate(user)
-	return result.RowsAffected > 0
+func InsertUser(user models.User) bool {
+	if err := global.DB.Create(&user).Error; err != nil {
+		fmt.Println("插入失败", err)
+		return false
+	}
+	return true
 }
 
 func UpdateUser(ID string, data interface{}) bool {
@@ -78,9 +80,9 @@ func GetUserListDao(page int, page_size int) (int, []interface{}) {
 var user models.User
 
 // UsernameFindUserInfo 通过username找到用户信息
-func FindUserInfo(username string, password string) (*models.User, bool) {
+func FindUserInfo(email string, password string) (*models.User, bool) {
 	// 查询用户
-	rows := global.DB.Where(&models.User{UserName: username, Password: password}).Find(&user)
+	rows := global.DB.Where(&models.User{Email: email, Password: password}).Find(&user)
 	fmt.Println(&user)
 	if rows.RowsAffected < 1 {
 		return &user, false

@@ -7,6 +7,7 @@ require github.com/fatih/color v1.14.1
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	golang.org/x/image v0.0.0-20190802002840-cff245a6509b // indirect
 )
 
