@@ -113,6 +113,7 @@ func HandleUserModelToMap(user *models.User) map[string]interface{} {
 		"id":       user.ID,
 		"UserName": user.UserName,
 		"HeadUrl":  user.HeadUrl,
+		"email":    user.Email,
 		"birthday": birthday,
 		"address":  user.Address,
 		"desc":     user.Desc,
