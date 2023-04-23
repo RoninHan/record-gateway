@@ -1,21 +1,25 @@
 package dao
 
 import (
-	"sample-go-service/forms"
+	"fmt"
 	"sample-go-service/global"
+	"sample-go-service/models"
 )
 
-var RecordsList []forms.RecordsList
+var records []models.Records
 
-func CreateRecord(data forms.RecordsForm) bool {
-	result := global.DB.Create(data)
-	return result.RowsAffected > 0
+func CreateRecord(data models.Records) bool {
+	if err := global.DB.Create(&data).Error; err != nil {
+		fmt.Println("插入失败", err)
+		return false
+	}
+	return true
 }
 
-func FindRecord() (*[]forms.RecordsList, bool) {
-	result := global.DB.Find(&RecordsList)
+func FindRecord() (*[]models.Records, bool) {
+	result := global.DB.Find(&records)
 	if result.RowsAffected > 0 {
-		return &RecordsList, true
+		return &records, true
 	}
-	return &RecordsList, false
+	return &records, false
 }

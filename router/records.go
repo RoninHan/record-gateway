@@ -1,16 +1,15 @@
 package router
 
 import (
+	"github.com/gin-gonic/gin"
 	"sample-go-service/controller"
 	"sample-go-service/middlewares"
-
-	"github.com/gin-gonic/gin"
 )
 
 func RecordRouter(Router *gin.RouterGroup) {
 	UserRouter := Router.Group("record")
 	{
 		UserRouter.POST("create", middlewares.JWTAuth(), controller.CreateRecord)
-		UserRouter.POST("list", middlewares.JWTAuth(), controller.GetRecirds)
+		UserRouter.POST("list", controller.GetRecirds)
 	}
 }

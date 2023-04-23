@@ -1,24 +1,25 @@
 package dao
 
 import (
-	"sample-go-service/forms"
+	"fmt"
 	"sample-go-service/global"
+	"sample-go-service/models"
 )
 
-var CategoriesForms []forms.CategoriesForm
+var categoriesModal []models.Categories
 
-func CreateCategories(data forms.CreateCategories) bool {
-	result := global.DB.Create(data)
-	if result.RowsAffected > 0 {
-		return true
+func CreateCategories(data models.Categories) bool {
+	if err := global.DB.Create(&data).Error; err != nil {
+		fmt.Println("插入失败", err)
+		return false
 	}
-	return false
+	return true
 }
 
-func FindCategories() (*[]forms.CategoriesForm, bool) {
-	result := global.DB.Find(&CategoriesForms)
+func FindCategories() (*[]models.Categories, bool) {
+	result := global.DB.Find(&categoriesModal)
 	if result.RowsAffected > 0 {
-		return &CategoriesForms, true
+		return &categoriesModal, true
 	}
-	return &CategoriesForms, false
+	return &categoriesModal, false
 }

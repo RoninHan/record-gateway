@@ -1,9 +1,11 @@
 package controller
 
 import (
+	"github.com/google/uuid"
 	"sample-go-service/Response"
 	"sample-go-service/dao"
 	"sample-go-service/forms"
+	"sample-go-service/models"
 	"sample-go-service/utils"
 
 	"github.com/gin-gonic/gin"
@@ -17,7 +19,14 @@ func CreateCategories(c *gin.Context) {
 		return
 	}
 
-	result := dao.CreateCategories(CategoriesForm)
+	categories := models.Categories{}
+	categories.ID = uuid.New().String()
+	categories.Icon = CategoriesForm.Icon
+	categories.Name = CategoriesForm.Name
+	categories.Color = CategoriesForm.Color
+	categories.Type = CategoriesForm.Type
+
+	result := dao.CreateCategories(categories)
 	if !result {
 		Response.Err(c, 401, 401, "新增失败", "")
 		return

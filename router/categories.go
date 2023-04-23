@@ -1,16 +1,14 @@
 package router
 
 import (
-	"sample-go-service/controller"
-	"sample-go-service/middlewares"
-
 	"github.com/gin-gonic/gin"
+	"sample-go-service/controller"
 )
 
 func CategoriesRouter(Router *gin.RouterGroup) {
 	UserRouter := Router.Group("categories")
 	{
-		UserRouter.POST("create", middlewares.JWTAuth(), controller.CreateCategories)
-		UserRouter.POST("list", middlewares.JWTAuth(), controller.GetCategories)
+		UserRouter.POST("create", controller.CreateCategories)
+		UserRouter.POST("list", controller.GetCategories)
 	}
 }

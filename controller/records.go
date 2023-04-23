@@ -1,12 +1,14 @@
 package controller
 
 import (
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"sample-go-service/Response"
 	"sample-go-service/dao"
 	"sample-go-service/forms"
+	"sample-go-service/models"
 	"sample-go-service/utils"
-
-	"github.com/gin-gonic/gin"
+	"time"
 )
 
 func CreateRecord(c *gin.Context) {
@@ -16,8 +18,17 @@ func CreateRecord(c *gin.Context) {
 		utils.HandleValidatorError(c, err)
 		return
 	}
+	userId := c.MustGet("userId").(string)
+	
+	record := models.Records{}
+	record.ID = uuid.New().String()
+	record.RecordDate = time.Now()
+	record.Amount = RecordsForm.Amount
+	record.CategoryId = RecordsForm.CategoryId
+	record.UserId = userId
+	record.Description = RecordsForm.Description
 
-	result := dao.CreateRecord(RecordsForm)
+	result := dao.CreateRecord(record)
 	if !result {
 		Response.Err(c, 401, 401, "新增失败", "")
 		return

@@ -1,0 +1,43 @@
+2023-04-23T14:01:56.129+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T15:56:36.500+0800	INFO	middlewares/logger.go:31	/v1/record/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/record/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "436.3901ms"}
+2023-04-23T16:02:04.493+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:02:04.493+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:02:04.502+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:02:04.650+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:02:04.820+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:02:05.594+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:02:58.018+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:03:00.624+0800	INFO	middlewares/logger.go:31	/v1/category/create	{"statusxixixixi": 404, "method": "POST", "path": "/v1/category/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "0s"}
+2023-04-23T16:03:02.761+0800	INFO	middlewares/logger.go:31	/v1/category/create	{"statusxixixixi": 404, "method": "POST", "path": "/v1/category/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "0s"}
+2023-04-23T16:03:21.441+0800	INFO	middlewares/logger.go:31	/v1/categories/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/categories/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "61.2592ms"}
+2023-04-23T16:05:53.655+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:05:54.544+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:06:00.281+0800	INFO	middlewares/logger.go:31	/v1/categories/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/categories/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "50.3179ms"}
+2023-04-23T16:06:43.870+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:06:59.105+0800	INFO	middlewares/logger.go:31	/v1/categories/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/categories/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "105.0625ms"}
+2023-04-23T16:43:01.826+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:54:42.301+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:55:30.266+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:56:09.838+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:56:10.376+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:56:12.388+0800	INFO	middlewares/logger.go:31	/v1/user/register	{"statusxixixixi": 401, "method": "POST", "path": "/v1/user/register", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "28.907ms"}
+2023-04-23T16:57:01.767+0800	INFO	middlewares/logger.go:31	/v1/record/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/record/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "0s"}
+2023-04-23T16:57:08.744+0800	INFO	middlewares/logger.go:31	/v1/record/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/record/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "0s"}
+2023-04-23T16:58:46.447+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T16:59:25.846+0800	INFO	middlewares/logger.go:31	/v1/record/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/record/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "1.4321ms"}
+2023-04-23T17:00:21.309+0800	INFO	middlewares/logger.go:31	/v1/record/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/record/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "398.7µs"}
+2023-04-23T17:05:36.621+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:05:36.740+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:05:47.167+0800	INFO	middlewares/logger.go:31	/v1/record/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/record/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "374.5µs"}
+2023-04-23T17:06:18.615+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:06:30.944+0800	INFO	middlewares/logger.go:31	/v1/record/create	{"statusxixixixi": 401, "method": "POST", "path": "/v1/record/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "0s"}
+2023-04-23T17:07:08.674+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:07:08.940+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:11:12.362+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:11:12.503+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:11:56.146+0800	INFO	middlewares/logger.go:31	/v1/record/create	{"statusxixixixi": 400, "method": "POST", "path": "/v1/record/create", "query": "", "ip": "::1", "user-agent": "PostmanRuntime/7.32.2", "errors": "", "cost": "708µs"}
+2023-04-23T17:27:05.993+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:27:06.498+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:27:25.451+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:27:46.154+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
+2023-04-23T17:27:59.736+0800	INFO	record-gateway/main.go:32	this is hello func	{"error": "启动错误!"}
