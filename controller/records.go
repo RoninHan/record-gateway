@@ -1,14 +1,16 @@
 package controller
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"sample-go-service/Response"
 	"sample-go-service/dao"
 	"sample-go-service/forms"
 	"sample-go-service/models"
 	"sample-go-service/utils"
+	"strconv"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 func CreateRecord(c *gin.Context) {
@@ -19,11 +21,11 @@ func CreateRecord(c *gin.Context) {
 		return
 	}
 	userId := c.MustGet("userId").(string)
-	
 	record := models.Records{}
 	record.ID = uuid.New().String()
 	record.RecordDate = time.Now()
-	record.Amount = RecordsForm.Amount
+	float, _ := strconv.ParseFloat(RecordsForm.Amount, 32)
+	record.Amount = float
 	record.CategoryId = RecordsForm.CategoryId
 	record.UserId = userId
 	record.Description = RecordsForm.Description
@@ -36,7 +38,12 @@ func CreateRecord(c *gin.Context) {
 	Response.Success(c, 200, "success", "Create successfully")
 }
 
-func GetRecirds(c *gin.Context) {
-	result, _ := dao.FindRecord()
+func GetTodayRecirds(c *gin.Context) {
+	userId := c.MustGet("userId").(string)
+	recirds, _ := dao.FindRecord(userId)
+	user, _ := dao.GetUser(userId)
+	token := utils.CreateToken(c, user.ID, user.UserName, user.Role)
+	result := map[string]interface{}{"data": recirds, "token": token}
+
 	Response.Success(c, 200, "success", result)
 }

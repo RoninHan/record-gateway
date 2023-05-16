@@ -1,12 +1,13 @@
 package controller
 
 import (
-	"github.com/google/uuid"
 	"sample-go-service/Response"
 	"sample-go-service/dao"
 	"sample-go-service/forms"
 	"sample-go-service/models"
 	"sample-go-service/utils"
+
+	"github.com/google/uuid"
 
 	"github.com/gin-gonic/gin"
 )
@@ -35,6 +36,16 @@ func CreateCategories(c *gin.Context) {
 }
 
 func GetCategories(c *gin.Context) {
-	result, _ := dao.FindCategories()
+	FindCategories := forms.FindCategories{}
+	if err := c.ShouldBind(&FindCategories); err != nil {
+		// 统一处理异常
+		utils.HandleValidatorError(c, err)
+		return
+	}
+	categories, _ := dao.FindCategories(FindCategories)
+	userId := c.MustGet("userId").(string)
+	user, _ := dao.GetUser(userId)
+	token := utils.CreateToken(c, user.ID, user.UserName, user.Role)
+	result := map[string]interface{}{"data": categories, "token": token}
 	Response.Success(c, 200, "success", result)
 }

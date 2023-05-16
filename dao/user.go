@@ -26,7 +26,7 @@ func UpdateUser(ID string, data interface{}) bool {
 }
 
 func GetUser(ID string) (*models.User, bool) {
-	row := global.DB.Where("ID", ID).Find(&user)
+	row := global.DB.Where("ID", ID).Find(&users)
 	if row.RowsAffected < 1 {
 		return &user, false
 	}

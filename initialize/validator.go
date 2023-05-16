@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"sample-go-service/global"
 
-	"github.com/fatih/color"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/locales/en"
 	"github.com/go-playground/locales/zh"
@@ -19,7 +18,7 @@ import (
 
 // InitTrans validator信息翻译
 func InitTrans(locale string) (err error) {
-	color.Red("test111111111111")
+
 	//修改gin框架中的validator引擎属性, 实现定制
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
 		//注册一个获取json的tag的自定义方法

@@ -31,7 +31,6 @@ func PasswordLogin(c *gin.Context) {
 		Response.Err(c, 401, 401, "未注册该用户", "")
 		return
 	}
-	println(user)
 	token := utils.CreateToken(c, user.ID, user.UserName, user.Role)
 	userinfoMap := HandleUserModelToMap(user)
 	result := map[string]interface{}{"user": userinfoMap, "token": token}

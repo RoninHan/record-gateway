@@ -2,6 +2,7 @@ package dao
 
 import (
 	"fmt"
+	"sample-go-service/forms"
 	"sample-go-service/global"
 	"sample-go-service/models"
 )
@@ -16,8 +17,8 @@ func CreateCategories(data models.Categories) bool {
 	return true
 }
 
-func FindCategories() (*[]models.Categories, bool) {
-	result := global.DB.Find(&categoriesModal)
+func FindCategories(data forms.FindCategories) (*[]models.Categories, bool) {
+	result := global.DB.Where(&models.Categories{Type: data.Type}).Find(&categoriesModal)
 	if result.RowsAffected > 0 {
 		return &categoriesModal, true
 	}

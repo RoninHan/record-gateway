@@ -10,6 +10,7 @@ import (
 )
 
 func CreateToken(c *gin.Context, Id string, NickName string, Role int) string {
+	println(Id)
 	//生成token信息
 	j := middlewares.NewJWT()
 	claims := middlewares.CustomClaims{

@@ -7,6 +7,10 @@ type CreateCategories struct {
 	Name  string `json:"name" binding:"required"`
 }
 
+type FindCategories struct {
+	Type string `json:"type" binding:"required"`
+}
+
 type CategoriesForm struct {
 	ID    string
 	Type  string
