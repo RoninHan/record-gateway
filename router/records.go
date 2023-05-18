@@ -11,6 +11,6 @@ func RecordRouter(Router *gin.RouterGroup) {
 	UserRouter := Router.Group("record")
 	{
 		UserRouter.POST("create", middlewares.JWTAuth(), controller.CreateRecord)
-		UserRouter.POST("list-today", middlewares.JWTAuth(), controller.GetTodayRecirds)
+		UserRouter.POST("list-month", middlewares.JWTAuth(), controller.GetTodayRecirds)
 	}
 }
